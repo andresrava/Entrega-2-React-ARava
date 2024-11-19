@@ -6,18 +6,18 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="icon-navbar">
-        <img className="icon-navbar" src="/img/logitech-icon.png" />
+        <img className="icon-navbar" src="/img/2ecf7364cd78b7222311518159a72179.jpg" />
       </Link>
 
       <ul className="categories-navbar">
-        <Link to="/category/mouse" className="categorie-navbar">
-          Mouse
+        <Link to="/category/playa" className="categorie-navbar">
+          Playa
         </Link>
-        <Link to="/category/teclado" className="categorie-navbar">
-          Teclados
+        <Link to="/category/aventura" className="categorie-navbar">
+          Aventura
         </Link>
-        <Link to="/category/audio" className="categorie-navbar">
-          Audio
+        <Link to="/category/cultura" className="categorie-navbar">
+          Cultura
         </Link>
       </ul>
       <CartWidget />
