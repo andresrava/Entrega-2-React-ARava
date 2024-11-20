@@ -1,5 +1,5 @@
 import useFetch from "../../customHooks/useFetch";
-import WeatherReport from "../WeatherReport/WeatherReport";
+import ReportFetcher from "../WeatherReport/WeatherReport";
 
 const ItemDetail = ({ product }) => {
 
@@ -9,7 +9,7 @@ const ItemDetail = ({ product }) => {
       <img src={product.image} />
       <p>{product.description}</p>
       <p>Precio: {product.price}</p>
-      <div>El día hoy en {product.city} : <WeatherReport product = {product} /></div>
+      <ReportFetcher product = {product} />
     </div>
   )
 }
