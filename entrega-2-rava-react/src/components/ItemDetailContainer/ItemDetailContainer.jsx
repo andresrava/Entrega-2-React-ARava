@@ -9,8 +9,6 @@ const ItemDetailContainer = () => {
 
   const { idProduct } = useParams()
 
-  const [place_id, setPlace_id] = useState("");
-
   useEffect(()=>{
     getProducts
       .then((respuesta)=> {

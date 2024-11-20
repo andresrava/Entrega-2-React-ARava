@@ -9,6 +9,7 @@ const ItemDetail = ({ product }) => {
       <img src={product.image} />
       <p>{product.description}</p>
       <p>Precio: {product.price}</p>
+      {/* ReportFetcher se encarga de traer el clima actual del destino en el detalle */}
       <ReportFetcher product = {product} />
     </div>
   )
