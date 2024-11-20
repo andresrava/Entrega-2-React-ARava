@@ -38,7 +38,7 @@ const ReportFetcher = ({ product }) => {
         const secondReport = await secondResponse.json();
 
         // Guardar el resultado final
-        setReport(secondReport);
+        setReport(secondReport.current.summary);
       } catch (err) {
         console.log("Este es el error: " + err)
         setError(err.message);
@@ -51,9 +51,9 @@ const ReportFetcher = ({ product }) => {
   // Renderizar el resultado o manejar errores
   return (
     <div>
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+      {/* {error && <p style={{ color: "red" }}>Error: {error}</p>} */}
       {report ? (
-        <p>{JSON.stringify(report)}</p>
+        <p>El clima en {product.city} es: {JSON.stringify(report)}</p>
       ) : (
         <p>Cargando datos...</p>
       )}
