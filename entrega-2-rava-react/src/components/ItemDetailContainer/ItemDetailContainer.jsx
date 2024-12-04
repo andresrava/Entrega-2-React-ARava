@@ -3,21 +3,28 @@ import getProducts from "../../data/getProducts"
 import ItemDetail from "./ItemDetail"
 import { useParams } from "react-router-dom"
 import useFetch from "../../customHooks/useFetch";
+import {doc,getDoc,getFirestore} from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({})
 
   const { idProduct } = useParams()
+  const db = getFirestore();
 
   useEffect(()=>{
-    getProducts
-      .then((respuesta)=> {
-        const newProduct = respuesta.find((product)=> product.id === idProduct );
-        setProduct(newProduct)
-        
-      })
-      .catch((error)=> console.log(error))
-  }, [idProduct])
+
+    // Creo la referencia al elemento
+    const itemRef = doc(db,"items", idProduct);
+
+    // traigo el elemento
+
+    getDoc(itemRef).then(snapshot=>{
+      console.log(snapshot);
+      console.log(snapshot.data());
+      setProduct(snapshot.data())
+    })
+    .catch((error)=> console.log(error))
+   }, [idProduct])
 
   return (
     <ItemDetail product={product} />
