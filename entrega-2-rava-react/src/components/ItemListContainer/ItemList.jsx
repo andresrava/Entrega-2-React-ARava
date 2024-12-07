@@ -5,7 +5,6 @@ const ItemList = ({ products}) => {
     <div className="item-list">
       {
         products.map((product)=> {
-          console.log("Entré al map");
           return <Item key={product.id} product={product} />
         })
       }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-// import getProducts from "../../data/getProducts";
 import { useParams } from "react-router-dom"
 import { collection, getDocs,getFirestore } from "firebase/firestore"
 import "./itemListContainer.css"
@@ -16,40 +15,33 @@ const ItemListContainer = ({ saludo }) => {
     // Creamos la referencia a la coleccion
 
     const itemCollection = collection(db,"items")
-
+    const productsList = [];
     // Traemos la información
-
+   
     getDocs(itemCollection).then
-    (snapshot=>{
-      setProducts([])
+      (snapshot=>{
         snapshot.docs.map(
           docu=>
           {
             const product = docu.data()
             product.id = docu.id;
-            products.push(product);
+            productsList.push(product);
           }
         )
         if(idCategory){
           //filtrar los productos
-          const newProducts = products.filter((producto)=> producto.category === idCategory )
+          const newProducts = productsList.filter((producto)=> producto.category === idCategory )
           setProducts(newProducts)
         }else{
-          console.log("Entré al else")
           //devolver todos los productos
-          setProducts(products)
+          setProducts(productsList)
         }
       })
-    .catch((error) => console.log(error))
-    .finally(() => {
-      console.log("Finalizo la promesa")
-      console.log("Ahora en el finally products es: ")
-      console.log(products)
-    });
-}, [idCategory]);
-
-console.log( "Ahora products es: "  )
-console.log(products)
+      .catch((error) => console.log(error))
+      .finally(() => {
+        console.log("Finalizo la promesa")
+      });
+  }, [idCategory]);
 
   return (
     <div className="item-list-container">
@@ -58,7 +50,6 @@ console.log(products)
       <ItemList products={products} />
     </div>
   );
-
 }
 ;
 export default ItemListContainer;
