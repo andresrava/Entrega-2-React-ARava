@@ -1,30 +1,40 @@
+import Swal from 'sweetalert2'
 import { useState } from "react";
+import { useContext } from "react";
+import { ItemsContext } from "../../contexts/ItemsContext";
 
-const ItemCount = ({ addToCart }) => {
+
+export const ItemCount = ({ onAdd}) => {
   const [count, setCount] = useState(1);
 
-  const sumar = () => {
-    //proximamente codicionamos con el stock
-    setCount(count + 1);
+  const handleDecrease = () => {
+    if (count > 1) {
+      setCount((prev) => prev - 1);
+    }
   };
 
-  const restar = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+  const handleIncrease = () => {
+      setCount((prev) => prev + 1);
+  };
+
+  const handleAdd = () => {
+    onAdd(count);
+    setCount(1);
   };
 
   return (
     <div>
-      <div>
-        <button onClick={restar}>-</button>
-        <p> {count} </p>
-        <button onClick={sumar}>+</button>
-      </div>
-      <div>
-        <button onClick={ ()=> addToCart(count)} >Agregar al carrito</button>
-      </div>
+      <span>Pasajeros: </span>
+      <button onClick={handleDecrease}> - </button>
+      <span>{count}</span>
+      <button onClick={handleIncrease}> + </button>
+      <hr />
+      <button onClick={handleAdd} className="btn btn-primary">
+        {" "}
+        Agregar al carrito{" "}
+      </button>
     </div>
   );
 };
-export default ItemCount;
+("");
+

@@ -43,7 +43,7 @@ const ReportFetcher = ({ product }) => {
   return (
     <div>
       {report ? (
-        <p>El clima en {product.city} es: {JSON.stringify(report)}</p>
+        <p>El clima actual en <b>{product.city}</b> es: {JSON.stringify(report)}</p>
       ) : (
         <p>Cargando datos...</p>
       )}

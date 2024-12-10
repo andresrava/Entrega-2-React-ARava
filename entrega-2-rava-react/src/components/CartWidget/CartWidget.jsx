@@ -1,11 +1,12 @@
-import carrito from "/img/cart.png";
+import carrito from "entrega-2-rava-react/public/img/cart.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { ItemsContext } from "../../contexts/ItemsContext";
+import { ItemsContext } from "../contexts/ItemsContext";
 
 export const CartWidget = () => {
   const { items } = useContext(ItemsContext);
-  const totalItems = items.length;
+
+  const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>
@@ -23,4 +24,3 @@ export const CartWidget = () => {
 };
 
 export default CartWidget;
-
