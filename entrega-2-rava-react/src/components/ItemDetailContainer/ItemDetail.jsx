@@ -1,4 +1,3 @@
-import useFetch from "../../customHooks/useFetch";
 import ReportFetcher from "../WeatherReport/WeatherReport";
 
 const ItemDetail = ({ product }) => {
