@@ -16,7 +16,7 @@ export const Checkout = () => {
   const [orderSuccess, setOrderSuccess] = useState(null);
 
   const total = items.reduce(
-    (acc, act) => acc + (act.price * act.quantity || 0),
+    (acc, act) => acc + (act.data.price * act.quantity || 0),
     0
   );
 
@@ -67,16 +67,16 @@ export const Checkout = () => {
               </button>
               <hr />
               {items?.map((i) => (
-                <Row key={i.id} className="mb-3">
+                <Row key={i.data.id} className="mb-3">
                   <Col md={4}>
-                    <img src={i.img} alt="producto" className="img-fluid" />
+                    <img src={i.data.image} alt="producto" className="img-fluid" style={{width: "50vw"}}/>
                   </Col>
                   <Col md={8}>
-                    <h5>{i.title}</h5>
+                    <h5>{i.data.name}</h5>
                     <p>Cantidad: {i.quantity}</p>
-                    <p>Precio unitario: ${Number(i.price)}</p>
-                    <p>Total: ${Number(i.price) * i.quantity}</p>
-                    <Button variant="danger" onClick={() => removeItems(i.id)}>
+                    <p>Precio unitario: ${Number(i.data.price)}</p>
+                    <p>Total: ${Number(i.data.price) * i.quantity}</p>
+                    <Button variant="danger" onClick={() => removeItems(i.data.id)}>
                       Eliminar
                     </Button>
                   </Col>

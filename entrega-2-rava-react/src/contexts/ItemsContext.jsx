@@ -27,10 +27,10 @@ export const Provider = ({ children }) => {
   };
 
   const removeItems = (id) => {
-    const updatedItems = items.filter((i) => i.id !== id);
+    const updatedItems = items.filter((i) => i.data.id !== id);
     setItems(updatedItems);
   };
-
+  console.log("El carrito es: ")
   console.log(items);
 
   return (
