@@ -5,7 +5,7 @@ const ItemDetail = ({ product }) => {
   return (
     <div>
       <h1>{product.name}</h1>
-      <img src={product.image} />
+      <img src={product.image} style={{width: "70vw"}}/>
       <p>{product.description}</p>
       <p>Precio: {product.price}</p>
       {/* ReportFetcher se encarga de traer el clima actual del destino en el detalle */}

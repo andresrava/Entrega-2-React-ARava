@@ -5,8 +5,6 @@ import { ItemsContext } from "../../contexts/ItemsContext";
 
 export const CartWidget = () => {
   const { items } = useContext(ItemsContext);
-
-  // const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalItems = items.length;
 
   return (
@@ -26,15 +24,3 @@ export const CartWidget = () => {
 
 export default CartWidget;
 
-
-// import { PiShoppingCartSimple } from "react-icons/pi";
-
-// const CartWidget = () => {
-//   return (
-//     <div className="cartwidget">
-//       <PiShoppingCartSimple size={30} />
-//       <p>1</p>
-//     </div>
-//   );
-// };
-// export default CartWidget;

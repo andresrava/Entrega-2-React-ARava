@@ -30,9 +30,6 @@ export const Provider = ({ children }) => {
     const updatedItems = items.filter((i) => i.data.id !== id);
     setItems(updatedItems);
   };
-  console.log("El carrito es: ")
-  console.log(items);
-
   return (
     <ItemsContext.Provider value={{ items, addItem, reset, removeItems }}>
       {children}
