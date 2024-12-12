@@ -40,12 +40,10 @@ export const Checkout = () => {
     try {
       const docRef = await addDoc(orderCollection, order);
       if (docRef.id) {
-        setOrderSuccess(`Su compra ha sido procesada correctamente`);
-
-        setTimeout(() => {
-          reset();
-          setBuyer("initialValues");
-        }, 3000);
+        setOrderSuccess(`Su compra ha sido procesada correctamente. Orden:> ${docRef.id}`);
+        
+        setBuyer(initialValues);
+        reset();
       }
     } catch (error) {
       console.error("Error al procesar la compra: ", error);
